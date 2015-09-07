@@ -4,6 +4,7 @@ SET(CMAKE_CXX_FLAGS "-std=c++11")
 include_directories(../include
                     ../../mo-utils)
 
-set(MOSOLVER_SRC UpperBoundSet.cpp)
+set(MOSOLVER_SRC  UpperBoundSet.cpp
+                  MOLP.cpp)
 
 add_library(mo_solver ${MOSOLVER_SRC})

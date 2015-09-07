@@ -14,7 +14,7 @@ class UpperBoundSetTest : public CppUnit::TestFixture {
     emptyUbs = new UpperBoundSet();
 
     simpleUbs = new UpperBoundSet();
-    std::vector<BVect> points;
+    MOLP points;
     std::vector<double> xVect;
     BVect bv1(1, 2, xVect);
     BVect bv2(2, 1, xVect);

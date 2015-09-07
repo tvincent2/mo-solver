@@ -1,15 +1,14 @@
 #ifndef UPPER_BOUND_SET_HPP
 #define UPPER_BOUND_SET_HPP
 
-#include <vector>
-#include "BVect.hpp"
+#include "MOLP.hpp"
 
 class UpperBoundSet {
  private:
-  std::vector<std::vector<BVect> > set;
+  std::vector<MOLP> set;
  public:
   bool empty();
-  void merge(std::vector<BVect>);
+  void merge(MOLP);
   unsigned molpNumber();
   unsigned pointNumber();
 };
