@@ -10,6 +10,8 @@ class UpperBoundSet {
  public:
   bool empty();
   void merge(std::vector<BVect>);
+  unsigned molpNumber();
+  unsigned pointNumber();
 };
 
 #endif  // UPPER_BOUND_SET_HPP

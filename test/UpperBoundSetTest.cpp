@@ -4,6 +4,7 @@
 class UpperBoundSetTest : public CppUnit::TestFixture {
   CPPUNIT_TEST_SUITE(UpperBoundSetTest);
   CPPUNIT_TEST(testEmptyness);
+  CPPUNIT_TEST(testSize);
   CPPUNIT_TEST_SUITE_END();
  private:
   UpperBoundSet* emptyUbs;
@@ -15,7 +16,10 @@ class UpperBoundSetTest : public CppUnit::TestFixture {
     simpleUbs = new UpperBoundSet();
     std::vector<BVect> points;
     std::vector<double> xVect;
-    BVect bv(0, 0, xVect);
+    BVect bv1(1, 2, xVect);
+    BVect bv2(2, 1, xVect);
+    points.push_back(bv1);
+    points.push_back(bv2);
     simpleUbs->merge(points);
   }
   void tearDown() {
@@ -25,6 +29,10 @@ class UpperBoundSetTest : public CppUnit::TestFixture {
   void testEmptyness() {
     CPPUNIT_ASSERT(emptyUbs->empty());
     CPPUNIT_ASSERT(!(simpleUbs->empty()));
+  }
+  void testSize() {
+    CPPUNIT_ASSERT(simpleUbs->molpNumber() == 1);
+    CPPUNIT_ASSERT(simpleUbs->pointNumber() == 2);
   }
 };
 
