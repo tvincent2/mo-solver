@@ -1,5 +1,11 @@
 #include "MOLP.hpp"
 
+MOLP::MOLP() {
+}
+
+MOLP::MOLP(std::vector<BVect> set) : set(set) {
+}
+
 bool MOLP::empty() {
   return set.empty();
 }

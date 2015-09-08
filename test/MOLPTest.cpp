@@ -5,10 +5,12 @@ class MOLPTest : public CppUnit::TestFixture {
   CPPUNIT_TEST_SUITE(MOLPTest);
   CPPUNIT_TEST(testEmptyness);
   CPPUNIT_TEST(testSize);
+  CPPUNIT_TEST(testConstructors);
   CPPUNIT_TEST_SUITE_END();
  private:
   MOLP* emptyMOLP;
   MOLP* simpleMOLP;
+  MOLP* constructMOLP;
  public:
   void setUp() {
     emptyMOLP = new MOLP();
@@ -19,6 +21,10 @@ class MOLPTest : public CppUnit::TestFixture {
     BVect bv2(2, 1, xVect);
     simpleMOLP->push_back(bv1);
     simpleMOLP->push_back(bv2);
+    std::vector<BVect> bvvect;
+    bvvect.push_back(bv1);
+    bvvect.push_back(bv2);
+    constructMOLP = new MOLP(bvvect);
   }
   void tearDown() {
     delete emptyMOLP;
@@ -30,6 +36,10 @@ class MOLPTest : public CppUnit::TestFixture {
   }
   void testSize() {
     CPPUNIT_ASSERT(simpleMOLP->size() == 2);
+  }
+  void testConstructors() {
+    CPPUNIT_ASSERT(!(constructMOLP->empty()));
+    CPPUNIT_ASSERT(constructMOLP->size() == 2);
   }
 };
 

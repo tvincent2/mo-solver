@@ -8,6 +8,8 @@ class MOLP {
  private:
   std::vector<BVect> set;
  public:
+  MOLP();
+  MOLP(std::vector<BVect>);
   bool empty();
   unsigned size();
   void push_back(const BVect&);
