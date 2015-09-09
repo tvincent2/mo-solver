@@ -46,8 +46,8 @@ class MOLPTest : public CppUnit::TestFixture {
   void testAccessors() {
     BVect left = simpleMOLP->leftmost();
     BVect right = simpleMOLP->rightmost();
-    CPPUNIT_ASSERT(left._y1 == 1 && left._y2 == 2);
-    CPPUNIT_ASSERT(right._y1 == 2 && right._y2 == 1);
+    CPPUNIT_ASSERT(left.y1() == 1 && left.y2() == 2);
+    CPPUNIT_ASSERT(right.y1() == 2 && right.y2() == 1);
   }
 };
 
