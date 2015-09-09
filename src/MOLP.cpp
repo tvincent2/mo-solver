@@ -17,3 +17,11 @@ unsigned MOLP::size() {
 void MOLP::push_back(const BVect& point) {
   set.push_back(point);
 }
+
+BVect MOLP::leftmost() {
+  return set.front();
+}
+
+BVect MOLP::rightmost() {
+  return set.back();
+}

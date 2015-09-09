@@ -13,6 +13,8 @@ class MOLP {
   bool empty();
   unsigned size();
   void push_back(const BVect&);
+  BVect leftmost();
+  BVect rightmost();
 };
 
 #endif

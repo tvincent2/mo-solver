@@ -6,6 +6,7 @@ class MOLPTest : public CppUnit::TestFixture {
   CPPUNIT_TEST(testEmptyness);
   CPPUNIT_TEST(testSize);
   CPPUNIT_TEST(testConstructors);
+  CPPUNIT_TEST(testAccessors);
   CPPUNIT_TEST_SUITE_END();
  private:
   MOLP* emptyMOLP;
@@ -41,6 +42,12 @@ class MOLPTest : public CppUnit::TestFixture {
   void testConstructors() {
     CPPUNIT_ASSERT(!(constructMOLP->empty()));
     CPPUNIT_ASSERT(constructMOLP->size() == 2);
+  }
+  void testAccessors() {
+    BVect left = simpleMOLP->leftmost();
+    BVect right = simpleMOLP->rightmost();
+    CPPUNIT_ASSERT(left._y1 == 1 && left._y2 == 2);
+    CPPUNIT_ASSERT(right._y1 == 2 && right._y2 == 1);
   }
 };
 
