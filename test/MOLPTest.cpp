@@ -29,6 +29,7 @@ class MOLPTest : public CppUnit::TestFixture {
   void tearDown() {
     delete emptyMOLP;
     delete simpleMOLP;
+    delete constructMOLP;
   }
   void testEmptyness() {
     CPPUNIT_ASSERT(emptyMOLP->empty());
