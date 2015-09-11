@@ -22,9 +22,12 @@ class MOLPTest : public CppUnit::TestFixture {
     BVect bv2(2, 1, xVect);
     BEdge be(bv1, bv2);
     simpleMOLP->push_back(be);
+
     std::list<BEdge> bevect;
     bevect.push_back(be);
     constructMOLP = new MOLP(bevect);
+    BVect bv3(3, 0, xVect);
+    constructMOLP->extendWithPoint(bv3);
   }
   void tearDown() {
     delete emptyMOLP;
@@ -40,13 +43,15 @@ class MOLPTest : public CppUnit::TestFixture {
   }
   void testConstructors() {
     CPPUNIT_ASSERT(!(constructMOLP->empty()));
-    CPPUNIT_ASSERT(constructMOLP->size() == 1);
+    CPPUNIT_ASSERT(constructMOLP->size() == 2);
   }
   void testAccessors() {
     BVect left = simpleMOLP->leftmostPoint();
     BVect right = simpleMOLP->rightmostPoint();
     CPPUNIT_ASSERT(left.y1() == 1 && left.y2() == 2);
     CPPUNIT_ASSERT(right.y1() == 2 && right.y2() == 1);
+    BVect constructRight = constructMOLP->rightmostPoint();
+    CPPUNIT_ASSERT(constructRight.y1() == 3 && constructRight.y2() == 0);
   }
 };
 
