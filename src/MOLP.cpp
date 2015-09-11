@@ -30,3 +30,11 @@ BVect MOLP::leftmostPoint() {
 BVect MOLP::rightmostPoint() {
   return set.back().rightPoint();
 }
+
+bool MOLP::isInA1AreaOf (MOLP& m) {
+  return (this->rightmostPoint().isInA1AreaOf(m.leftmostPoint()));
+}
+
+bool MOLP::isInA2AreaOf (MOLP& m) {
+  return m.isInA1AreaOf(*this);
+}

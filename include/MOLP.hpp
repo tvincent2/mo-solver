@@ -17,6 +17,8 @@ class MOLP {
   void extendWithPoint(const BVect&);
   BVect leftmostPoint();
   BVect rightmostPoint();
+  bool isInA1AreaOf(MOLP&);
+  bool isInA2AreaOf(MOLP&);
 };
 
 #endif
