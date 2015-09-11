@@ -16,7 +16,7 @@ unsigned UpperBoundSet::molpNumber() {
   return set.size();
 }
 
-unsigned UpperBoundSet::pointNumber() {
+unsigned UpperBoundSet::edgeNumber() {
   unsigned number = 0;
   for (auto &molp : set) {
     number += molp.size();

@@ -10,7 +10,7 @@ class UpperBoundSet {
   bool empty();
   void merge(MOLP);
   unsigned molpNumber();
-  unsigned pointNumber();
+  unsigned edgeNumber();
 };
 
 #endif  // UPPER_BOUND_SET_HPP

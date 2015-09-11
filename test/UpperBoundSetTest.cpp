@@ -14,13 +14,13 @@ class UpperBoundSetTest : public CppUnit::TestFixture {
     emptyUbs = new UpperBoundSet();
 
     simpleUbs = new UpperBoundSet();
-    MOLP points;
+    MOLP simpleMOLP;
     std::vector<double> xVect;
     BVect bv1(1, 2, xVect);
     BVect bv2(2, 1, xVect);
-    points.push_back(bv1);
-    points.push_back(bv2);
-    simpleUbs->merge(points);
+    BEdge be(bv1, bv2);
+    simpleMOLP.push_back(be);
+    simpleUbs->merge(simpleMOLP);
   }
   void tearDown() {
     delete emptyUbs;
@@ -32,7 +32,7 @@ class UpperBoundSetTest : public CppUnit::TestFixture {
   }
   void testSize() {
     CPPUNIT_ASSERT(simpleUbs->molpNumber() == 1);
-    CPPUNIT_ASSERT(simpleUbs->pointNumber() == 2);
+    CPPUNIT_ASSERT(simpleUbs->edgeNumber() == 1);
   }
 };
 

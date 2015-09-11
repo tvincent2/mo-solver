@@ -3,7 +3,7 @@
 MOLP::MOLP() {
 }
 
-MOLP::MOLP(std::list<BVect> set) : set(set) {
+MOLP::MOLP(std::list<BEdge> set) : set(set) {
 }
 
 bool MOLP::empty() {
@@ -14,14 +14,14 @@ unsigned MOLP::size() {
   return set.size();
 }
 
-void MOLP::push_back(const BVect& point) {
-  set.push_back(point);
+void MOLP::push_back(const BEdge& edge) {
+  set.push_back(edge);
 }
 
-BVect MOLP::leftmost() {
-  return set.front();
+BVect MOLP::leftmostPoint() {
+  return set.front().leftPoint();
 }
 
-BVect MOLP::rightmost() {
-  return set.back();
+BVect MOLP::rightmostPoint() {
+  return set.back().rightPoint();
 }

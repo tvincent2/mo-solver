@@ -3,18 +3,20 @@
 
 #include <list>
 #include "BVect.hpp"
+#include "BEdge.hpp"
 
 class MOLP {
  private:
-  std::list<BVect> set;
+  std::list<BEdge> set;
  public:
   MOLP();
-  MOLP(std::list<BVect>);
+  MOLP(std::list<BEdge>);
   bool empty();
   unsigned size();
-  void push_back(const BVect&);
-  BVect leftmost();
-  BVect rightmost();
+  void push_back(const BEdge&);
+  void extendWithPoint(const BVect&);
+  BVect leftmostPoint();
+  BVect rightmostPoint();
 };
 
 #endif
