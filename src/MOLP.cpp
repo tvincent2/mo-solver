@@ -6,11 +6,11 @@ MOLP::MOLP() {
 MOLP::MOLP(std::list<BEdge> set) : set(set) {
 }
 
-bool MOLP::empty() {
+bool MOLP::empty() const {
   return set.empty();
 }
 
-unsigned MOLP::size() {
+unsigned MOLP::size() const {
   return set.size();
 }
 
@@ -23,18 +23,18 @@ void MOLP::extendWithPoint(const BVect& point) {
   this->push_back(e);
 }
 
-BVect MOLP::leftmostPoint() {
+BVect MOLP::leftmostPoint() const {
   return set.front().leftPoint();
 }
 
-BVect MOLP::rightmostPoint() {
+BVect MOLP::rightmostPoint() const {
   return set.back().rightPoint();
 }
 
-bool MOLP::isInA1AreaOf (MOLP& m) {
+bool MOLP::isInA1AreaOf (const MOLP& m) const {
   return (this->rightmostPoint().isInA1AreaOf(m.leftmostPoint()));
 }
 
-bool MOLP::isInA2AreaOf (MOLP& m) {
+bool MOLP::isInA2AreaOf (const MOLP& m) const {
   return m.isInA1AreaOf(*this);
 }

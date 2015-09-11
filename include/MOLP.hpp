@@ -11,14 +11,14 @@ class MOLP {
  public:
   MOLP();
   MOLP(std::list<BEdge>);
-  bool empty();
-  unsigned size();
+  bool empty() const;
+  unsigned size() const;
   void push_back(const BEdge&);
   void extendWithPoint(const BVect&);
-  BVect leftmostPoint();
-  BVect rightmostPoint();
-  bool isInA1AreaOf(MOLP&);
-  bool isInA2AreaOf(MOLP&);
+  BVect leftmostPoint() const;
+  BVect rightmostPoint() const;
+  bool isInA1AreaOf(const MOLP&) const;
+  bool isInA2AreaOf(const MOLP&) const;
 };
 
 #endif

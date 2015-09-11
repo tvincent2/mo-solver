@@ -1,6 +1,6 @@
 #include "UpperBoundSet.hpp"
 
-bool UpperBoundSet::empty() {
+bool UpperBoundSet::empty() const {
   return set.empty();
 }
 
@@ -12,11 +12,11 @@ void UpperBoundSet::merge(MOLP newMOLP) {
   }
 }
 
-unsigned UpperBoundSet::molpNumber() {
+unsigned UpperBoundSet::molpNumber() const {
   return set.size();
 }
 
-unsigned UpperBoundSet::edgeNumber() {
+unsigned UpperBoundSet::edgeNumber() const {
   unsigned number = 0;
   for (auto &molp : set) {
     number += molp.size();
