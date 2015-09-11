@@ -22,7 +22,7 @@ class MOLPTest : public CppUnit::TestFixture {
     BVect bv2(2, 1, xVect);
     simpleMOLP->push_back(bv1);
     simpleMOLP->push_back(bv2);
-    std::vector<BVect> bvvect;
+    std::list<BVect> bvvect;
     bvvect.push_back(bv1);
     bvvect.push_back(bv2);
     constructMOLP = new MOLP(bvvect);

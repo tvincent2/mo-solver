@@ -1,15 +1,15 @@
 #ifndef MOLP_HPP
 #define MOLP_HPP
 
-#include <vector>
+#include <list>
 #include "BVect.hpp"
 
 class MOLP {
  private:
-  std::vector<BVect> set;
+  std::list<BVect> set;
  public:
   MOLP();
-  MOLP(std::vector<BVect>);
+  MOLP(std::list<BVect>);
   bool empty();
   unsigned size();
   void push_back(const BVect&);

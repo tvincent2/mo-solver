@@ -5,7 +5,7 @@
 
 class UpperBoundSet {
  private:
-  std::vector<MOLP> set;
+  std::list<MOLP> set;
  public:
   bool empty();
   void merge(MOLP);

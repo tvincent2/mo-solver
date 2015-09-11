@@ -3,7 +3,7 @@
 MOLP::MOLP() {
 }
 
-MOLP::MOLP(std::vector<BVect> set) : set(set) {
+MOLP::MOLP(std::list<BVect> set) : set(set) {
 }
 
 bool MOLP::empty() {
