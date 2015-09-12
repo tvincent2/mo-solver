@@ -7,11 +7,14 @@ class MOLPTest : public CppUnit::TestFixture {
   CPPUNIT_TEST(testSize);
   CPPUNIT_TEST(testConstructors);
   CPPUNIT_TEST(testAccessors);
+  CPPUNIT_TEST(testAreaPredicates);
   CPPUNIT_TEST_SUITE_END();
  private:
   MOLP* emptyMOLP;
   MOLP* simpleMOLP;
   MOLP* constructMOLP;
+  MOLP* leftMOLP;
+  MOLP* rightMOLP;
  public:
   void setUp() {
     emptyMOLP = new MOLP();
@@ -28,11 +31,20 @@ class MOLPTest : public CppUnit::TestFixture {
     constructMOLP = new MOLP(bevect);
     BVect bv3(3, 0, xVect);
     constructMOLP->extendWithPoint(bv3);
+
+    leftMOLP = new MOLP();
+    rightMOLP = new MOLP();
+    leftMOLP->push_back(be);
+    BVect bv4(4, -1, xVect);
+    BEdge be2(bv3, bv4);
+    rightMOLP->push_back(be2);
   }
   void tearDown() {
     delete emptyMOLP;
     delete simpleMOLP;
     delete constructMOLP;
+    delete leftMOLP;
+    delete rightMOLP;
   }
   void testEmptyness() {
     CPPUNIT_ASSERT(emptyMOLP->empty());
@@ -52,6 +64,10 @@ class MOLPTest : public CppUnit::TestFixture {
     CPPUNIT_ASSERT(right.y1() == 2 && right.y2() == 1);
     BVect constructRight = constructMOLP->rightmostPoint();
     CPPUNIT_ASSERT(constructRight.y1() == 3 && constructRight.y2() == 0);
+  }
+  void testAreaPredicates() {
+    CPPUNIT_ASSERT(leftMOLP->isInA1AreaOf(*rightMOLP));
+    CPPUNIT_ASSERT(rightMOLP->isInA2AreaOf(*leftMOLP));
   }
 };
 
