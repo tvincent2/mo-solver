@@ -68,6 +68,8 @@ class MOLPTest : public CppUnit::TestFixture {
   void testAreaPredicates() {
     CPPUNIT_ASSERT(leftMOLP->isInA1AreaOf(*rightMOLP));
     CPPUNIT_ASSERT(rightMOLP->isInA2AreaOf(*leftMOLP));
+    CPPUNIT_ASSERT(!(leftMOLP->isInA2AreaOf(*rightMOLP)));
+    CPPUNIT_ASSERT(!(rightMOLP->isInA1AreaOf(*leftMOLP)));
   }
 };
 
