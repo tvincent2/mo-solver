@@ -70,6 +70,10 @@ class MOLPTest : public CppUnit::TestFixture {
     CPPUNIT_ASSERT(rightMOLP->isInA2AreaOf(*leftMOLP));
     CPPUNIT_ASSERT(!(leftMOLP->isInA2AreaOf(*rightMOLP)));
     CPPUNIT_ASSERT(!(rightMOLP->isInA1AreaOf(*leftMOLP)));
+    CPPUNIT_ASSERT(!leftMOLP->isInA1AreaOf(*constructMOLP));
+    CPPUNIT_ASSERT(!leftMOLP->isInA2AreaOf(*constructMOLP));
+    CPPUNIT_ASSERT(!rightMOLP->isInA1AreaOf(*constructMOLP));
+    CPPUNIT_ASSERT(!rightMOLP->isInA2AreaOf(*constructMOLP));
   }
 };
 
