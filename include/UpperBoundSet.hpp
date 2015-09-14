@@ -11,6 +11,7 @@ class UpperBoundSet {
   void merge(MOLP);
   unsigned molpNumber() const;
   unsigned edgeNumber() const;
+  bool hasDominanceRelationshipWith(const MOLP) const;
 };
 
 #endif  // UPPER_BOUND_SET_HPP
