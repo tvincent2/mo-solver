@@ -60,10 +60,10 @@ class MOLPTest : public CppUnit::TestFixture {
   void testAccessors() {
     BVect left = simpleMOLP->leftmostPoint();
     BVect right = simpleMOLP->rightmostPoint();
-    CPPUNIT_ASSERT(left.y1() == 1 && left.y2() == 2);
-    CPPUNIT_ASSERT(right.y1() == 2 && right.y2() == 1);
+    CPPUNIT_ASSERT(left.z1() == 1 && left.z2() == 2);
+    CPPUNIT_ASSERT(right.z1() == 2 && right.z2() == 1);
     BVect constructRight = constructMOLP->rightmostPoint();
-    CPPUNIT_ASSERT(constructRight.y1() == 3 && constructRight.y2() == 0);
+    CPPUNIT_ASSERT(constructRight.z1() == 3 && constructRight.z2() == 0);
   }
   void testAreaPredicates() {
     CPPUNIT_ASSERT(leftMOLP->isInA1AreaOf(*rightMOLP));
