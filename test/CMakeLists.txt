@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 project(mo-solver-tests)
 include_directories(../include
-                    ../../mo-utils)
+                    ../../mo-utils/include)
 find_library(CPPUNIT_LIBRARY cppunit)
 
 set(TESTS_SRC main.cpp
