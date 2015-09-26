@@ -6,6 +6,10 @@ MOLP::MOLP() {
 MOLP::MOLP(std::list<BEdge> set) : set(set) {
 }
 
+std::list<BEdge> MOLP::edges() const {
+  return set;
+}
+
 bool MOLP::empty() const {
   return set.empty();
 }

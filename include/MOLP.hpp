@@ -11,6 +11,7 @@ class MOLP {
  public:
   MOLP();
   MOLP(std::list<BEdge>);
+  std::list<BEdge> edges() const;
   bool empty() const;
   unsigned size() const;
   void push_back(const BEdge&);
