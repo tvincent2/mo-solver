@@ -4,6 +4,7 @@
 #include <list>
 #include "BVect.hpp"
 #include "BEdge.hpp"
+#include "DominanceStatus.hpp"
 
 class MOLP {
  private:
@@ -20,6 +21,7 @@ class MOLP {
   BVect rightmostPoint() const;
   bool isInA1AreaOf(const MOLP&) const;
   bool isInA2AreaOf(const MOLP&) const;
+  DominanceStatus computeUpdate(MOLP&, std::list<MOLP>&);
 };
 
 #endif
