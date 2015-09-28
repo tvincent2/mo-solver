@@ -57,6 +57,14 @@ class MOLPTest : public CppUnit::TestFixture {
     CPPUNIT_ASSERT(!(constructMOLP->empty()));
     CPPUNIT_ASSERT(constructMOLP->size() == 2);
   }
+  void testEdgeGetters() {
+    std::list<BEdge> edges = constructMOLP->edges();
+    CPPUNIT_ASSERT(edges.size() == 2);
+    CPPUNIT_ASSERT(edges.front().leftPoint().z1() == 1 && edges.front().leftPoint().z2() == 2);
+    CPPUNIT_ASSERT(edges.front().rightPoint().z1() == 2 && edges.front().rightPoint().z2() == 1);
+    CPPUNIT_ASSERT(edges.back().leftPoint().z1() == 2 && edges.back().leftPoint().z2() == 1);
+    CPPUNIT_ASSERT(edges.back().rightPoint().z1() == 3 && edges.back().rightPoint().z2() == 0);
+  }
   void testAccessors() {
     BVect left = simpleMOLP->leftmostPoint();
     BVect right = simpleMOLP->rightmostPoint();
