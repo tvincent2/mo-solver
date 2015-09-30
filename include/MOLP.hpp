@@ -21,7 +21,7 @@ class MOLP {
   BVect rightmostPoint() const;
   bool isInA1AreaOf(const MOLP&) const;
   bool isInA2AreaOf(const MOLP&) const;
-  DominanceStatus computeUpdate(MOLP&, std::list<MOLP>&);
+  DominanceStatus computeUpdate(const MOLP&, std::list<MOLP>&) const;
 };
 
 #endif

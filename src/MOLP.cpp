@@ -42,3 +42,28 @@ bool MOLP::isInA1AreaOf (const MOLP& m) const {
 bool MOLP::isInA2AreaOf (const MOLP& m) const {
   return m.isInA1AreaOf(*this);
 }
+
+DominanceStatus MOLP::computeUpdate(const MOLP& compMOLP, std::list<MOLP>& toAdd) const {
+  if (this->isInA1AreaOf(compMOLP) || this->isInA2AreaOf(compMOLP))
+    return DominanceStatus::NO_DOM;
+  bool AdomB = false, BdomA = false;
+  auto compEdge = compMOLP.edges().begin();
+  for (auto thisEdge: this->edges()) {
+    if (compEdge == compMOLP.edges().end()) {
+      break;
+    }
+    if (!thisEdge.isInA1AreaOf(*compEdge)) {
+      while (compEdge->isInA1AreaOf(thisEdge) && compEdge != compMOLP.edges().end())
+        ++compEdge;
+    }
+  }
+
+  if (AdomB && BdomA)
+    return DominanceStatus::MUTUAL_DOM;
+  else if (!AdomB && BdomA)
+    return DominanceStatus::B_DOM_A;
+  else if (AdomB && !BdomA)
+    return DominanceStatus::A_DOM_B;
+  else
+    return DominanceStatus::NO_DOM;
+}
