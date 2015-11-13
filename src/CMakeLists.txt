@@ -5,6 +5,7 @@ include_directories(../include
                     ../../mo-utils/include)
 
 set(MOSOLVER_SRC  UpperBoundSet.cpp
-                  MOLP.cpp)
+                  MOLP.cpp
+                  MOLPUpdateComputation.cpp)
 
 add_library(mo_solver ${MOSOLVER_SRC})
