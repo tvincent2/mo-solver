@@ -3,11 +3,14 @@
 
 class MOLPUpdateComputationTest : public CppUnit::TestFixture {
   CPPUNIT_TEST_SUITE(MOLPUpdateComputationTest);
+  CPPUNIT_TEST(testNoDominance);
   CPPUNIT_TEST_SUITE_END();
  private:
   MOLP* molpA;
   MOLP* molpB;
-  MOLPUpdateComputation* muc;
+  MOLP* molpC;
+  MOLPUpdateComputation* mucAB;
+  MOLPUpdateComputation* mucAC;
  public:
   void setUp() {
     std::vector<double> xVect;
@@ -30,15 +33,27 @@ class MOLPUpdateComputationTest : public CppUnit::TestFixture {
     molpB->push_back(be1B);
     molpB->push_back(be2B);
 
-    muc = new MOLPUpdateComputation(*molpA, *molpB);
+    molpC = new MOLP();
+    BVect bv1C(3, 9, xVect);
+    BVect bv2C(4, 7, xVect);
+    BVect bv3C(5, 6, xVect);
+    BEdge be1C(bv1C, bv2C);
+    BEdge be2C(bv2C, bv3C);
+    molpC->push_back(be1C);
+    molpC->push_back(be2C);
+
+    mucAB = new MOLPUpdateComputation(*molpA, *molpB);
+    mucAC = new MOLPUpdateComputation(*molpA, *molpC);
   }
   void tearDown() {
     delete molpA;
     delete molpB;
-    delete muc;
+    delete mucAB;
+    delete mucAC;
   }
   void testNoDominance() {
-    CPPUNIT_ASSERT(muc->noDominance());
+    CPPUNIT_ASSERT(mucAB->noDominance());
+    CPPUNIT_ASSERT(!mucAC->noDominance());
   }
 };
 
