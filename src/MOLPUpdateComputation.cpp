@@ -3,7 +3,7 @@
 MOLPUpdateComputation::MOLPUpdateComputation(MOLP a, MOLP b) : molpA(a), molpB(b) {
 }
 
-bool noDominance() {
+bool MOLPUpdateComputation::noDominance() {
   return (molpA.empty() ||
           molpB.empty() ||
           molpA.isInA1AreaOf(molpB) ||
