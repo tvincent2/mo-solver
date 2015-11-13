@@ -17,6 +17,6 @@ class MOLPUpdateComputation {
   DominanceStatus computeUpdate();
   bool noDominance();
   void initIterators();
-}
+};
 
 #endif
