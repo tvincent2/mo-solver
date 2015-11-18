@@ -4,6 +4,7 @@
 class MOLPUpdateComputationTest : public CppUnit::TestFixture {
   CPPUNIT_TEST_SUITE(MOLPUpdateComputationTest);
   CPPUNIT_TEST(testNoDominance);
+  CPPUNIT_TEST(testPrepareIterators);
   CPPUNIT_TEST_SUITE_END();
  private:
   MOLP* molpA;
@@ -54,6 +55,14 @@ class MOLPUpdateComputationTest : public CppUnit::TestFixture {
   void testNoDominance() {
     CPPUNIT_ASSERT(mucAB->noDominance());
     CPPUNIT_ASSERT(!mucAC->noDominance());
+  }
+  void testPrepareIterators() {
+    mucAB->prepareIterators();
+    CPPUNIT_ASSERT(mucAB->getIterA() == mucAB->getEndA());
+    CPPUNIT_ASSERT(mucAB->getIterB() == mucAB->getBeginB());
+    mucAC->prepareIterators();
+    CPPUNIT_ASSERT(mucAC->getIterA() == mucAC->getBeginA());
+    CPPUNIT_ASSERT(mucAC->getIterB() == mucAC->getBeginB());
   }
 };
 
