@@ -17,6 +17,30 @@ void MOLPUpdateComputation::prepareIterators() {
     ++iterB;
 }
 
+std::list<BEdge>::iterator MOLPUpdateComputation::getIterA() {
+  return iterA;
+}
+
+std::list<BEdge>::iterator MOLPUpdateComputation::getIterB() {
+  return iterB;
+}
+
+std::list<BEdge>::iterator MOLPUpdateComputation::getBeginA() {
+  return molpA.begin();
+}
+
+std::list<BEdge>::iterator MOLPUpdateComputation::getBeginB() {
+  return molpB.begin();
+}
+
+std::list<BEdge>::iterator MOLPUpdateComputation::getEndA() {
+  return endA;
+}
+
+std::list<BEdge>::iterator MOLPUpdateComputation::getEndB() {
+  return endB;
+}
+
 DominanceStatus MOLPUpdateComputation::computeUpdate() {
   if (noDominance())
     return DominanceStatus::NO_DOM;

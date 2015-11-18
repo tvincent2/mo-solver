@@ -17,6 +17,12 @@ class MOLPUpdateComputation {
   DominanceStatus computeUpdate();
   bool noDominance();
   void prepareIterators();
+  std::list<BEdge>::iterator getIterA();
+  std::list<BEdge>::iterator getIterB();
+  std::list<BEdge>::iterator getBeginA();
+  std::list<BEdge>::iterator getBeginB();
+  std::list<BEdge>::iterator getEndA();
+  std::list<BEdge>::iterator getEndB();
 };
 
 #endif
