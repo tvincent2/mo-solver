@@ -11,9 +11,9 @@ bool MOLPUpdateComputation::noDominance() {
 }
 
 void MOLPUpdateComputation::prepareIterators() {
-  while (iterA->isInA1AreaOf(*iterB) && iterA != endA)
+  while (iterA != endA && iterB != endB && iterA->isInA1AreaOf(*iterB))
     ++iterA;
-  while (iterB->isInA1AreaOf(*iterA) && iterB != endB)
+  while (iterA != endA && iterB != endB && iterB->isInA1AreaOf(*iterA))
     ++iterB;
 }
 
