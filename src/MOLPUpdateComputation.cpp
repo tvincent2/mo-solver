@@ -1,6 +1,6 @@
 #include "MOLPUpdateComputation.hpp"
 
-MOLPUpdateComputation::MOLPUpdateComputation(MOLP a, MOLP b) : molpA(a), molpB(b) {
+MOLPUpdateComputation::MOLPUpdateComputation(MOLP a, MOLP b) : molpA(a), molpB(b), endA(molpA.end()), endB(molpB.end()), iterA(molpA.begin()), iterB(molpB.begin()) {
 }
 
 bool MOLPUpdateComputation::noDominance() {
@@ -10,11 +10,7 @@ bool MOLPUpdateComputation::noDominance() {
           molpB.isInA1AreaOf(molpA));
 }
 
-void MOLPUpdateComputation::initIterators() {
-  endA = molpA.edges().end();
-  endB = molpB.edges().end();
-  iterA = molpA.edges().begin();
-  iterB = molpB.edges().begin();
+void MOLPUpdateComputation::prepareIterators() {
   while (iterA->isInA1AreaOf(*iterB) && iterA != endA)
     ++iterA;
   while (iterB->isInA1AreaOf(*iterA) && iterB != endB)
@@ -24,5 +20,5 @@ void MOLPUpdateComputation::initIterators() {
 DominanceStatus MOLPUpdateComputation::computeUpdate() {
   if (noDominance())
     return DominanceStatus::NO_DOM;
-  initIterators();
+  prepareIterators();
 }
