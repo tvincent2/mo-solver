@@ -24,6 +24,13 @@ class MOLP {
   bool isInA1AreaOf(const MOLP&) const;
   bool isInA2AreaOf(const MOLP&) const;
   DominanceStatus computeUpdate(const MOLP&, std::list<MOLP>&) const;
+  friend ostream& operator << (ostream& s, const MOLP& m) {
+    s << "{ ";
+    for (auto edge: m.edges())
+      s << edge << " ";
+    s << "}";
+    return s;
+  }
 };
 
 #endif
