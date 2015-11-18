@@ -10,8 +10,8 @@ class MOLPUpdateComputation {
   MOLP molpB;
   std::list<BEdge>::iterator iterA;
   std::list<BEdge>::iterator iterB;
-  std::list<BEdge>::iterator endA;
-  std::list<BEdge>::iterator endB;
+  const std::list<BEdge>::iterator endA;
+  const std::list<BEdge>::iterator endB;
  public:
   MOLPUpdateComputation(MOLP, MOLP);
   DominanceStatus computeUpdate();
