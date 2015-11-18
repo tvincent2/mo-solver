@@ -10,6 +10,14 @@ std::list<BEdge> MOLP::edges() const {
   return set;
 }
 
+std::list<BEdge>::iterator MOLP::begin() {
+  return set.begin();
+}
+
+std::list<BEdge>::iterator MOLP::end() {
+  return set.end();
+}
+
 bool MOLP::empty() const {
   return set.empty();
 }

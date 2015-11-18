@@ -13,6 +13,8 @@ class MOLP {
   MOLP();
   MOLP(std::list<BEdge>);
   std::list<BEdge> edges() const;
+  std::list<BEdge>::iterator begin();
+  std::list<BEdge>::iterator end();
   bool empty() const;
   unsigned size() const;
   void push_back(const BEdge&);
