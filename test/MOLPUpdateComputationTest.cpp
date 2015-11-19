@@ -12,7 +12,9 @@ class MOLPUpdateComputationTest : public CppUnit::TestFixture {
   MOLP* molpB;
   MOLP* molpC;
   MOLPUpdateComputation* mucAB;
+  MOLPUpdateComputation* mucBA;
   MOLPUpdateComputation* mucAC;
+  MOLPUpdateComputation* mucCA;
  public:
   void setUp() {
     std::vector<double> xVect;
@@ -45,29 +47,43 @@ class MOLPUpdateComputationTest : public CppUnit::TestFixture {
     molpC->push_back(be2C);
 
     mucAB = new MOLPUpdateComputation(*molpA, *molpB);
+    mucBA = new MOLPUpdateComputation(*molpB, *molpA);
     mucAC = new MOLPUpdateComputation(*molpA, *molpC);
+    mucCA = new MOLPUpdateComputation(*molpC, *molpA);
   }
   void tearDown() {
     delete molpA;
     delete molpB;
     delete mucAB;
+    delete mucBA;
     delete mucAC;
+    delete mucCA;
   }
   void testNoDominance() {
     CPPUNIT_ASSERT(mucAB->noDominance());
+    CPPUNIT_ASSERT(mucBA->noDominance());
     CPPUNIT_ASSERT(!mucAC->noDominance());
+    CPPUNIT_ASSERT(!mucCA->noDominance());
   }
   void testPrepareIterators() {
     mucAB->prepareIterators();
     CPPUNIT_ASSERT(mucAB->getIterA() == mucAB->getEndA());
     CPPUNIT_ASSERT(mucAB->getIterB() == mucAB->getBeginB());
+    mucBA->prepareIterators();
+    CPPUNIT_ASSERT(mucBA->getIterA() == mucBA->getBeginA());
+    CPPUNIT_ASSERT(mucBA->getIterB() == mucBA->getEndB());
     mucAC->prepareIterators();
     CPPUNIT_ASSERT(mucAC->getIterA() == mucAC->getBeginA());
     CPPUNIT_ASSERT(mucAC->getIterB() == mucAC->getBeginB());
+    mucCA->prepareIterators();
+    CPPUNIT_ASSERT(mucCA->getIterA() == mucCA->getBeginA());
+    CPPUNIT_ASSERT(mucCA->getIterB() == mucCA->getBeginB());
   }
   void testComputeUpdate() {
     CPPUNIT_ASSERT(mucAB->computeUpdate() == DominanceStatus::NO_DOM);
+    CPPUNIT_ASSERT(mucBA->computeUpdate() == DominanceStatus::NO_DOM);
     CPPUNIT_ASSERT(mucAC->computeUpdate() == DominanceStatus::A_PART_DOM_B);
+    CPPUNIT_ASSERT(mucCA->computeUpdate() == DominanceStatus::B_PART_DOM_A);
   }
 };
 
