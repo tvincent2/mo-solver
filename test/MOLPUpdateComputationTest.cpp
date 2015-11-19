@@ -35,9 +35,9 @@ class MOLPUpdateComputationTest : public CppUnit::TestFixture {
     molpB->push_back(be2B);
 
     molpC = new MOLP();
-    BVect bv1C(3, 9, xVect);
-    BVect bv2C(4, 7, xVect);
-    BVect bv3C(5, 6, xVect);
+    BVect bv1C(3, 8.5, xVect);
+    BVect bv2C(4, 6.5, xVect);
+    BVect bv3C(5, 5.5, xVect);
     BEdge be1C(bv1C, bv2C);
     BEdge be2C(bv2C, bv3C);
     molpC->push_back(be1C);
